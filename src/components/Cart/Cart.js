@@ -4,19 +4,19 @@ import './Cart.css'
 const Cart = ({cart}) => {
     // console.log(cart)
     
-    // let total = 0;
-    // for(const product of cart){
-    //     total = total + product.price
-    // }
-    const totalFn = (previous, current) => previous + current.price
-    let total = cart.reduce(totalFn, 0)
+    let total = 0;
+    for(const product of cart){
+        total = total + product.price * product.quantity
+    }
+    // const totalFn = (previous, current) => previous + current.price
+    // let total = cart.reduce(totalFn, 0)
     
-    // let shipping = 0;
-    // for(const product of cart){
-    //     shipping = shipping + product.shipping
-    // }
-    const shippingFn = (p, c) => p + c.shipping
-    let shipping = cart.reduce(shippingFn, 0)
+    let shipping = 0;
+    for(const product of cart){
+        shipping = shipping + product.shipping
+    }
+    // const shippingFn = (p, c) => p + c.shipping
+    // let shipping = cart.reduce(shippingFn, 0)
 
     let tax = parseFloat((total * .10).toFixed(2))
     // console.log(typeof tax)
